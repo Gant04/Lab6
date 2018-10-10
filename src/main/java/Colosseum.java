@@ -103,27 +103,26 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon returnPokemon = new Pokemon();
-
         //Set pokemon type
-        System.out.println("Select from the following Pokemon types: <br>\n" +
-                "     1 - Electric Pokemon <br>\n" +
-                "     2 - Fire Pokemon <br>\n" +
-                "     3 - Water Pokemon <br>");
-        int typeselection = myScan.nextInt();
-        while (typeselection != 1 && typeselection != 2 && typeselection != 3) {
+        System.out.println("Select from the following Pokemon types: \n" +
+                "     1 - Electric Pokemon \n" +
+                "     2 - Fire Pokemon \n" +
+                "     3 - Water Pokemon ");
+        int typeSelection = myScan.nextInt();
+        while (typeSelection != 1 && typeSelection != 2 && typeSelection != 3) {
             System.out.println("Sorry, you must pick either 1, 2, or 3");
-            System.out.println(" Select from the following Pokemon types: <br>\n" +
-                    "     1 - Electric Pokemon <br>\n" +
-                    "     2 - Fire Pokemon <br>\n" +
-                    "     3 - Water Pokemon <br>");
-            typeselection = myScan.nextInt();
+            System.out.println(" Select from the following Pokemon types: \n" +
+                    "     1 - Electric Pokemon \n" +
+                    "     2 - Fire Pokemon \n" +
+                    "     3 - Water Pokemon ");
+            typeSelection = myScan.nextInt();
         }
-        if (typeselection == 1) {
-            returnPokemon.pokeType = Pokemon.PokemonType.ELECTRIC;
-        } else if (typeselection == 2) {
-            returnPokemon.pokeType = Pokemon.PokemonType.FIRE;
-        } else if (typeselection == 3) {
-            returnPokemon.pokeType = Pokemon.PokemonType.WATER;
+        if (typeSelection == 1) {
+            ElectricPokemon nPokemon = new ElectricPokemon();
+        } else if (typeSelection == 2) {
+            FirePokemon nPokemon = new FirePokemon();
+        } else if (typeSelection == 3) {
+            WaterPokemon nPokemon = new WaterPokemon();
         }
 
         // Name your Pokemon

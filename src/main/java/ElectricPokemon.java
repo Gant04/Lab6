@@ -20,6 +20,7 @@ public class ElectricPokemon extends Pokemon {
      * Constructs a new ElectricPokemon with the Pokemon Type of electric.
      * ElectricPokemon's specialty attack is THUNDERBOLT
      */
+
     public ElectricPokemon() {
         pokeType = PokemonType.ELECTRIC;
         specialtyAttack = "THUNDERBOLT";
@@ -58,6 +59,7 @@ public class ElectricPokemon extends Pokemon {
      *
      * Implement this.
      */
+    @Override
     public boolean attack(final Pokemon opponent) {
         /*
          * Get the attack and defense bonuses.

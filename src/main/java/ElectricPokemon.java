@@ -59,7 +59,72 @@ public class ElectricPokemon extends Pokemon {
      * Implement this.
      */
     public boolean attack(final Pokemon opponent) {
-        return false;
+        /*
+         * Get the attack and defense bonuses.
+         */
+        int attackBonus = d20.roll();
+        int defenseBonus = d20.roll();
+
+        /*
+         * Roll the damage dice and compute total damage.
+         */
+        int damage1 = d6.roll();
+        int damage2 = d6.roll();
+        int damage3 = d6.roll();
+        int totalDamage = damage1 + damage2 + damage3;
+
+        System.out.println(getName() + " is attacking " + opponent.getName());
+        System.out.println(getName() + " rolls an attack bonus of " + attackBonus);
+        System.out.println(opponent.getName() + " rolls a defense bonus of " + defenseBonus);
+
+
+        /*
+         * Did our attack hit?
+         */
+        if ((getAttackLevel() + attackBonus) > (opponent.getDefenseLevel() + defenseBonus)) {
+            System.out.println("The attack hits dealing 3-D6 damage!");
+            System.out.println("The rolls are " + damage1 + ", " + damage2 + ", " + "and "
+                    + damage3 + " totaling: " + totalDamage + " damage!");
+
+            /*
+             * Does opponent have hit points left?
+             */
+            if ((opponent.getHitPoints() - totalDamage) > 0) {
+                if (pokeType != opponent.pokeType) {
+                    specialtyProbability = Math.random();
+                    if (specProb > specialtyProbability) {
+                        System.out.println(getName() + "executes a specialty attack... THUNDERBOLT!!!");
+                        System.out.println(opponent.getName() + "has been defeated!");
+                        opponent.setHitPoints(0);
+                    } else {
+                        System.out.println("The special attack missed!");
+                    }
+
+                }
+                System.out.println(opponent.getName() + " has "
+                        + (opponent.getHitPoints() - totalDamage) + " hit points");
+            } else {
+                System.out.println(opponent.getName() + " has been defeated!");
+            }
+            /*
+             * Set the opponents hitPoints appropriately.
+             */
+            int hpleft = opponent.getHitPoints() - totalDamage;
+            opponent.setHitPoints(hpleft);
+
+        } else {
+            System.out.println("The attack missed!");
+            specialtyProbability = Math.random();
+            if (specProb > specialtyProbability) {
+                System.out.println(getName() + "executes a specialty attack... THUNDERBOLT!!!");
+                System.out.println(opponent.getName() + "has been defeated!");
+                opponent.setHitPoints(0);
+            } else {
+                System.out.println("The special attack missed!");
+            }
+        }
+        System.out.println(" ");
+        return (opponent.getHitPoints() < 1);
     }
 
 }

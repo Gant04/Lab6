@@ -143,7 +143,7 @@ public class Colosseum {
         //Set attack level
         System.out.println("How many attack level will it have? (1-50)");
         int pokeAtk = myScan.nextInt();
-        while (pokeAtk < 1 || pokeAtk > MAX_HIT_POINTS) {
+        while (pokeAtk < 1 || pokeAtk >= MAX_HIT_POINTS) {
             System.out.println("Sorry. attack level must be between 1 and 50:");
             pokeAtk = myScan.nextInt();
         }

@@ -102,7 +102,8 @@ public class Colosseum {
      * (Look, we can return objects too!)
      */
     public static Pokemon buildPokemon() {
-        Pokemon returnPokemon = new Pokemon();
+        Pokemon returnPokemon;
+
         //Set pokemon type
         System.out.println("Select from the following Pokemon types: \n" +
                 "     1 - Electric Pokemon \n" +
@@ -117,12 +118,13 @@ public class Colosseum {
                     "     3 - Water Pokemon ");
             typeSelection = myScan.nextInt();
         }
+
         if (typeSelection == 1) {
-            ElectricPokemon nPokemon = new ElectricPokemon();
+            returnPokemon = new ElectricPokemon();
         } else if (typeSelection == 2) {
-            FirePokemon nPokemon = new FirePokemon();
-        } else if (typeSelection == 3) {
-            WaterPokemon nPokemon = new WaterPokemon();
+            returnPokemon = new FirePokemon();
+        } else {
+            returnPokemon = new WaterPokemon();
         }
 
         // Name your Pokemon
